@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,20 +19,7 @@ class VideoSpeedApp extends StatelessWidget {
         brightness: Brightness.dark,
         useMaterial3: true,
       ),
-      home: const Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.speed, size: 80, color: Colors.blue),
-              SizedBox(height: 16),
-              Text('Video Speed App', style: TextStyle(fontSize: 24)),
-              SizedBox(height: 8),
-              Text('Minimal test version'),
-            ],
-          ),
-        ),
-      ),
+      home: const HomeScreen(),
     );
   }
 }

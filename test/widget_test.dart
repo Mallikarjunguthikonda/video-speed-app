@@ -6,7 +6,7 @@ void main() {
     await tester.pumpWidget(const VideoSpeedApp());
     await tester.pumpAndSettle();
 
-    expect(find.text('Video Speed App'), findsOneWidget);
-    expect(find.text('Minimal test version'), findsOneWidget);
+    expect(find.text('Video Speed Changer'), findsOneWidget);
+    expect(find.text('Pick a Video'), findsOneWidget);
   });
 }
