@@ -91,8 +91,8 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.black.withValues(alpha: 0),
-                      Colors.black.withValues(alpha: 0.7),
+                      Colors.black.withOpacity(0),
+                      Colors.black.withOpacity(0.7),
                     ],
                   ),
                 ),
