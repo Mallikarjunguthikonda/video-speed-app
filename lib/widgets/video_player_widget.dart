@@ -75,7 +75,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: AspectRatio(
-                aspectRatio: value.aspectRatio,
+                aspectRatio: value.aspectRatio > 0 ? value.aspectRatio : 16 / 9,
                 child: VideoPlayer(widget.controller),
               ),
             ),

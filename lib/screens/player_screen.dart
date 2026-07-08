@@ -28,14 +28,18 @@ class _PlayerScreenState extends State<PlayerScreen> {
 
   Future<void> _initPlayer() async {
     try {
-      final controller = VideoPlayerController.file(
-        File(widget.filePath),
-      );
+      final file = File(widget.filePath);
+      if (!file.existsSync()) {
+        throw Exception('Video file not found');
+      }
+      final controller = VideoPlayerController.file(file);
       _controller = controller;
       await controller.initialize();
-      controller.play();
       if (mounted) {
+        controller.play();
         setState(() => _isInitialized = true);
+      } else {
+        controller.dispose();
       }
     } catch (e) {
       debugPrint('Video init error: $e');
@@ -47,7 +51,11 @@ class _PlayerScreenState extends State<PlayerScreen> {
 
   void _onSpeedChanged(double speed) {
     setState(() => _speed = speed);
-    _controller?.setPlaybackSpeed(speed);
+    try {
+      _controller?.setPlaybackSpeed(speed);
+    } catch (e) {
+      debugPrint('Speed change error: $e');
+    }
   }
 
   @override

@@ -51,11 +51,10 @@ class HomeScreen extends StatelessWidget {
         await file.readStream!.pipe(sink);
         await sink.flush();
         await sink.close();
-      } else if (file.bytes != null) {
-        await tempFile.writeAsBytes(file.bytes!);
       } else {
-        // Fallback: try direct file copy (works for real paths)
-        await File(file.path!).copy(tempFile.path);
+        throw Exception(
+          'Cannot access this video file. Please try a different video.',
+        );
       }
 
       if (!context.mounted) return;
