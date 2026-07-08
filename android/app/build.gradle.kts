@@ -3,6 +3,17 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+configurations.all {
+    resolutionStrategy {
+        // Force Maven Central compatible version since maven.arthenica.com is unreachable
+        eachDependency {
+            if (requested.group == "com.arthenica" && requested.name == "ffmpeg-kit-full") {
+                useVersion("6.0.LTS")
+            }
+        }
+    }
+}
+
 android {
     namespace = "com.mallikarjun.video_speed_app"
     compileSdk = flutter.compileSdkVersion
